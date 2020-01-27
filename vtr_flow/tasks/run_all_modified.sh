@@ -1,4 +1,9 @@
-~/workspace/vtr-verilog-to-routing/vtr_flow/scripts/run_vtr_task.pl ramin_task
+vtr_dir=~/workspace/vtr/
+
+#./../../vpr/vpr ../arch/timing/xc6vlx240tff1156_modified.xml ../benchmarks/blif/seq.blif
+#exit 0
+
+../scripts/run_vtr_task.pl ramin_task
 exit 0
 
 

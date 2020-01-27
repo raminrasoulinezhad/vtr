@@ -42,6 +42,7 @@
         <port name="out2" clock="clk"/>
       </output_ports>
     </model>
+    <!--
     <model name="adder">
       <input_ports>
         <port name="a" combinational_sink_ports="cout sumout"/>
@@ -53,6 +54,7 @@
         <port name="sumout"/>
       </output_ports>
     </model>
+    -->
     <model name="xadder">
       <input_ports>
         <port name="a_xor_b" combinational_sink_ports="sumout cout"/>
@@ -85,7 +87,8 @@
       <output name="I" num_pins="1"/>
       <output name="GND_WIRE" num_pins="1"/>
       <output name="VCC_WIRE" num_pins="1"/>
-      <fc in_type="abs" in_val="1" out_type="abs" out_val="1"/>
+      <!-- <fc in_type="abs" in_val="1" out_type="abs" out_val="1"/> -->
+      <fc in_type="frac" in_val="1.0" out_type="frac" out_val="1.0"/>
       <pinlocations pattern="spread"/>
     </tile>
     <tile name="SLICEL" capacity="2">
@@ -121,7 +124,8 @@
       <output name="GND_WIRE" num_pins="1"/>
       <output name="VCC_WIRE" num_pins="1"/>
       <clock name="CLK" num_pins="1"/>
-      <fc in_type="abs" in_val="1" out_type="abs" out_val="1">
+      <!-- <fc in_type="abs" in_val="1" out_type="abs" out_val="1"> -->
+      <fc in_type="frac" in_val="1.0" out_type="frac" out_val="1.0">
         <!-- Carry chain pins have no access to general routing -->
         <fc_override port_name="CIN" fc_type="frac" fc_val="0"/>
         <fc_override port_name="COUT" fc_type="frac" fc_val="0"/>
@@ -146,7 +150,8 @@
       <output name="GND_WIRE" num_pins="1"/>
       <output name="VCC_WIRE" num_pins="1"/>
       <clock name="CLK" num_pins="1"/>
-      <fc in_type="abs" in_val="1" out_type="abs" out_val="1"/>
+      <!-- <fc in_type="abs" in_val="1" out_type="abs" out_val="1"/> -->
+      <fc in_type="frac" in_val="1.0" out_type="frac" out_val="1.0"/>
       <pinlocations pattern="spread"/>
     </tile>
     <tile name="RAMB36E1" height="5">
@@ -247,7 +252,8 @@
       <clock name="s0_REGCLKB" num_pins="1"/>
       <clock name="s1_REGCLKARDRCLK" num_pins="1"/>
       <clock name="s1_REGCLKB" num_pins="1"/>
-      <fc in_type="abs" in_val="1" out_type="abs" out_val="1"/>
+      <!-- <fc in_type="abs" in_val="1" out_type="abs" out_val="1"/> -->
+      <fc in_type="frac" in_val="1.0" out_type="frac" out_val="1.0"/>
       <pinlocations pattern="spread"/>
     </tile>
     <tile name="BUFG" height="2" capacity="16">
@@ -261,7 +267,8 @@
       <output name="O" num_pins="1"/>
       <output name="GND_WIRE" num_pins="1"/>
       <output name="VCC_WIRE" num_pins="1"/>
-      <fc in_type="abs" in_val="1" out_type="abs" out_val="1"/>
+      <!-- <fc in_type="abs" in_val="1" out_type="abs" out_val="1"/> -->
+      <fc in_type="frac" in_val="1.0" out_type="frac" out_val="1.0"/>
       <pinlocations pattern="spread"/>
     </tile>
   </tiles>
@@ -829,6 +836,7 @@
             </interconnect>
           </mode>
         </pb_type>
+        <!-->
         <pb_type name="DUMMY" blif_model=".subckt adder" num_pb="1">
           <input name="a" num_pins="1"/>
           <input name="b" num_pins="1"/>
@@ -836,6 +844,7 @@
           <output name="sumout" num_pins="1"/>
           <output name="cout" num_pins="1"/>
         </pb_type>
+        <-->
         <interconnect>
           <direct name="A6-1" input="SLICEL.A6-1" output="ble6[0].A6-1"/>
           <direct name="AX" input="SLICEL.AX" output="ble6[0].AX"/>
@@ -4399,9 +4408,9 @@
         <input name="ignore" num_pins="2"/>
         <output name="o" num_pins="1"/>
         <delay_constant max="0e-12" min="0e-12" in_port="BUFGCTRL.i" out_port="BUFGCTRL.o"/>
-        <delay_constant max="0e-12" min="0e-12" in_port="BUFGCTRL.s" out_port="BUFGCTRL.o"/>
-        <delay_constant max="0e-12" min="0e-12" in_port="BUFGCTRL.ce" out_port="BUFGCTRL.o"/>
-        <delay_constant max="0e-12" min="0e-12" in_port="BUFGCTRL.ignore" out_port="BUFGCTRL.o"/>
+		<delay_constant max="0e-12" min="0e-12" in_port="BUFGCTRL.s" out_port="BUFGCTRL.o"/>
+		<delay_constant max="0e-12" min="0e-12" in_port="BUFGCTRL.ce" out_port="BUFGCTRL.o"/>
+		<delay_constant max="0e-12" min="0e-12" in_port="BUFGCTRL.ignore" out_port="BUFGCTRL.o"/>
       </pb_type>
       <interconnect>
         <direct name="i" input="BUFG.I" output="BUFGCTRL.i"/>
